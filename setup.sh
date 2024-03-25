@@ -3,10 +3,10 @@
 # Identify package manager
 if [ -x "$(command -v apt-get)" ]; then
     PM="apt-get"
-elif [ -x "$(command -v yum)" ]; then
-    PM="yum"
 elif [ -x "$(command -v dnf)" ]; then
     PM="dnf"
+elif [ -x "$(command -v yum)" ]; then
+    PM="yum"
 else
     echo "No package manager found"
     exit 1
@@ -38,18 +38,16 @@ fi
 
 # Install oh-my-zsh
 echo "Installing oh-my-zsh and plugins"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 cp container.zsh-theme ~/.oh-my-zsh/custom/themes
 cd ~/.oh-my-zsh/custom/plugins
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 git clone https://github.com/cedi/meaningful-error-codes.git
 cd -
-mv ~/.zshrc ~/.zshrc.bak
+if [ -f ~/.zshrc ]; then
+    mv ~/.zshrc ~/.zshrc.bak
+fi
 cp .zshrc ~/.zshrc
-
-# Change default shell to zsh
-echo "Changing default shell to zsh"
-chsh -s $(which zsh)
 
 # Configure git
 echo "Configuring git"
