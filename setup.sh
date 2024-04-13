@@ -34,6 +34,7 @@ else
         sudo dnf install gh
     fi
     gh auth login
+    gh extension install github/gh-copilot
 fi
 
 # Install oh-my-zsh

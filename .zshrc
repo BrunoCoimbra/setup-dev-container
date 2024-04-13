@@ -41,13 +41,13 @@ ZSH_THEME="container"
 DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -74,17 +74,7 @@ plugins=(git web-search macos meaningful-error-codes zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
-title() {
-  echo -n -e "\033]0;$1\007"
-}
-
-alias \?='echo $? ${exit_status}'
-
-unset LESS
-
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
-ZSH_HIGHLIGHT_STYLES[path]=fg=blue
-ZSH_HIGHLIGHT_STYLES[autodirectory]=fg=blue
+# User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -109,3 +99,13 @@ ZSH_HIGHLIGHT_STYLES[autodirectory]=fg=blue
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+unset LESS
+
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+ZSH_HIGHLIGHT_STYLES[path]=fg=blue
+ZSH_HIGHLIGHT_STYLES[autodirectory]=fg=blue
+
+alias \?='echo $? ${exit_status}'
+
+eval "$(gh copilot alias -- zsh)"
