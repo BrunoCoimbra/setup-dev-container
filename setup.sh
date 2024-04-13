@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Description: Setup basic environment for a new container
 
 # Identify package manager
@@ -41,10 +43,10 @@ fi
 echo "Installing oh-my-zsh and plugins"
 git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 cp container.zsh-theme ~/.oh-my-zsh/custom/themes
-cd ~/.oh-my-zsh/custom/plugins
+cd ~/.oh-my-zsh/custom/plugins || exit
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 git clone https://github.com/cedi/meaningful-error-codes.git
-cd -
+cd - || exit
 if [ -f ~/.zshrc ]; then
     mv ~/.zshrc ~/.zshrc.bak
 fi
