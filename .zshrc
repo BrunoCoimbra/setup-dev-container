@@ -70,7 +70,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git web-search macos meaningful-error-codes zsh-syntax-highlighting)
+plugins=(git web-search macos meaningful-error-codes zsh-syntax-highlighting  zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -107,5 +107,3 @@ ZSH_HIGHLIGHT_STYLES[path]=fg=blue
 ZSH_HIGHLIGHT_STYLES[autodirectory]=fg=blue
 
 alias \?='echo $? ${exit_status}'
-
-eval "$(gh copilot alias -- zsh)"

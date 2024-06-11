@@ -41,11 +41,12 @@ fi
 
 # Install oh-my-zsh
 echo "Installing oh-my-zsh and plugins"
-git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
 cp container.zsh-theme ~/.oh-my-zsh/custom/themes
 cd ~/.oh-my-zsh/custom/plugins || exit
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 git clone https://github.com/cedi/meaningful-error-codes.git
+git clone https://github.com/zsh-users/zsh-autosuggestions.git
 cd - || exit
 if [ -f ~/.zshrc ]; then
     mv ~/.zshrc ~/.zshrc.bak
